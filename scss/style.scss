@@ -91,7 +91,7 @@ $theme-brown: #966844;
 $container-width: 90%;
 
 .navbar {
-  @include size(100%, 3.8em);
+  @include size(100%, 5em);
   .container {
     @include flex-between(center, row);
     @include fixed-lt(0%, 0%);
@@ -105,7 +105,7 @@ $container-width: 90%;
     &__logo {
       display: block;
       width: 7em;
-      height: 3.8em;
+      height: 5em;
       @include bg-contain;
       background-image: url('../navbar/icon/logo.svg');
     }
@@ -113,7 +113,7 @@ $container-width: 90%;
       @include flex-start(center, row);
       margin: 0 2em;
       li {
-        height: 3.8em;
+        height: 5em;
         @include flex-center(center, row);
         a {
           @include font(1.1em, 1.5em, 500, 2px);
