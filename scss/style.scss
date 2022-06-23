@@ -1,0 +1,299 @@
+@import 'reset';
+@import 'tools';
+@import 'animation';
+@import 'RWD';
+
+* {
+  position: relative;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+.wrap {
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  background: #f9f7f3;
+  backface-visibility: hidden;
+  .book {
+    @include size(50%, 100%);
+    perspective: 600px;
+    perspective-origin: center 20%;
+    margin: 0 auto;
+    vertical-align: baseline;
+    .items {
+      position: absolute;
+      top: 10%;
+      @include size(100%, 100%);
+      transform-style: preserve-3d;
+      transition: all 0.8s cubic-bezier(0, 0, 0.2, 1);
+      vertical-align: baseline;
+      .item {
+        @include img-w(100%, contain) {
+          vertical-align: middle;
+          position: absolute;
+        }
+        opacity: 0.95;
+        &:nth-child(5) {
+          img {
+            position: absolute;
+            width: 70%;
+            top: 150px;
+            left: 50%;
+          }
+        }
+        &:nth-child(30) {
+          a {
+            @include absolute-rb(15%, -130px);
+            @include size(200px, 60px);
+          }
+        }
+        &:nth-child(32) {
+          img {
+            position: absolute;
+            width: 70%;
+            top: 150px;
+            left: 50%;
+          }
+        }
+        &:nth-child(33) {
+          a {
+            @include absolute-rb(39%, -260px);
+            @include size(120px, 30px);
+          }
+        }
+      }
+    }
+  }
+}
+
+.visible {
+  visibility: visible;
+  opacity: 1;
+}
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+$theme-lightgreen: #dbe4e3;
+$theme-white: #f9f7f3;
+$theme-green: #51a9ae;
+$theme-darkgreen: #597476;
+$theme-yellow: #fef9e5;
+$theme-pro-yellow: #f3e9c3;
+$theme-orange: #d89e75;
+$theme-red: #b8552e;
+$theme-brown: #966844;
+$container-width: 90%;
+
+.navbar {
+  @include size(100%, 3.8em);
+  .container {
+    @include flex-between(center, row);
+    @include fixed-lt(0%, 0%);
+    z-index: 90;
+    width: 100%;
+    padding: 0 5%;
+    margin: 0 auto;
+  }
+  &__menu {
+    @include flex-start(center, row);
+    &__logo {
+      display: block;
+      width: 7em;
+      height: 3.8em;
+      @include bg-contain;
+      background-image: url('../navbar/icon/logo.svg');
+    }
+    &__list {
+      @include flex-start(center, row);
+      margin: 0 2em;
+      li {
+        height: 3.8em;
+        @include flex-center(center, row);
+        a {
+          @include font(1.1em, 1.5em, 500, 2px);
+          margin: 0 1em;
+          color: $theme-darkgreen;
+          cursor: pointer;
+          &:hover {
+            font-weight: 600;
+          }
+        }
+      }
+      .brandList {
+        button {
+          background-color: transparent;
+          border: none;
+        }
+        .brand {
+          @include flex-center(center, row);
+          @include absolute-lt(0, 100%);
+          width: 37em;
+          z-index: 5;
+          background-color: rgba($color: $theme-white, $alpha: 0.5);
+          @include blur(180%, 5px);
+          visibility: hidden;
+          &__list {
+            width: 50%;
+            @include flex-center(flex-start, column);
+            li {
+              width: 100%;
+              height: 3em;
+              a {
+                display: block;
+                width: 100%;
+                padding: 0 1em;
+                @include font(1.1em, 3em, 600, 1px);
+                color: #777;
+                text-align: left;
+              }
+              span {
+                @include size(100%, 12em);
+                @include bg-contain;
+                visibility: hidden;
+                transition: all 0.3s;
+                opacity: 0;
+                z-index: 30;
+              }
+              .img1 {
+                @include absolute-lt(100%, 0%);
+                background-image: url('../navbar/brand/brand-1.png');
+              }
+              .img2 {
+                @include absolute-lt(100%, -3em);
+                background-image: url('../navbar/brand/brand-2.png');
+              }
+              .img3 {
+                @include absolute-lt(100%, -6em);
+                background-image: url('../navbar/brand/brand-3.png');
+              }
+              .img4 {
+                @include absolute-lt(100%, -9em);
+                background-image: url('../navbar/brand/brand-4.png');
+              }
+              &:hover {
+                background-color: $theme-white;
+                a {
+                  color: $theme-darkgreen;
+                }
+              }
+              &:hover {
+                span {
+                  visibility: visible;
+                  opacity: 1;
+                }
+              }
+            }
+          }
+          &__imgBox {
+            width: 50%;
+            border-left: 1px solid $theme-lightgreen;
+            img {
+              width: 100%;
+              object-position: center;
+              object-fit: cover;
+            }
+          }
+        }
+        &:hover {
+          .brand {
+            visibility: visible;
+          }
+        }
+      }
+      .search {
+        margin-left: 1em;
+        width: 12em;
+        input {
+          @include size(100%, 2em);
+          @include font(1em, 1.5em, 300, 2px);
+          padding: 0 2em;
+          border-radius: 2.5em;
+          background-color: $theme-white;
+          border: none;
+        }
+        span {
+          @include absolute-rt(0.5em, 50%);
+          transform: translateY(-50%);
+          @include size(1.3em, 1.3em);
+          @include bg-contain;
+          background-image: url('../navbar/icon/search.svg');
+        }
+      }
+    }
+  }
+
+  &__icon {
+    @include flex-end(center, row);
+    li {
+      margin-left: 2em;
+      a {
+        display: inline-block;
+        @include size(1.7em, 1.7em);
+        @include bg-cover;
+        &:active {
+          transform: scale(0.9);
+        }
+      }
+      &:nth-child(1) {
+        span {
+          display: inline-block;
+          @include size(1.7em, 1.7em);
+          @include bg-cover;
+          cursor: pointer;
+          background-image: url('../navbar/icon/heart.svg');
+          &:active {
+            transform: scale(0.9);
+          }
+        }
+      }
+      &:nth-child(2) {
+        a {
+          background-image: url('../navbar/icon/shop.svg');
+        }
+      }
+      &:nth-child(3) {
+        a {
+          background-image: url('../navbar/icon/login.svg');
+        }
+      }
+    }
+    .phone-btn {
+      span {
+        display: inline-block;
+        @include size(1.7em, 1.7em);
+        @include bg-cover;
+        cursor: pointer;
+        background-image: url('../navbar/icon/buger.svg');
+        &:active {
+          transform: scale(0.8);
+        }
+      }
+    }
+  }
+}
+
+@include rwd-L-down {
+  html {
+    font-size: 14px;
+  }
+}
+@include rwd-M-up {
+  .phone-btn {
+    display: none;
+  }
+  .AsideBrand {
+    display: none;
+  }
+}
+
+@include rwd-M-down {
+  .navbar__menu__list {
+    display: none;
+  }
+}

@@ -1,0 +1,36 @@
+//水平排版
+// 置中
+@mixin flex-center($align, $flow) {
+  display: flex;
+  justify-content: center;
+  align-items: $align;
+  flex-flow: $flow;
+}
+// 靠左
+@mixin flex-start($align, $flow) {
+  display: flex;
+  justify-content: flex-start;
+  align-items: $align;
+  flex-flow: $flow;
+}
+// 靠右
+@mixin flex-end($align, $flow) {
+  display: flex;
+  justify-content: flex-end;
+  align-items: $align;
+  flex-flow: $flow;
+}
+// 水平均分
+@mixin flex-around($align, $flow) {
+  display: flex;
+  justify-content: space-around;
+  align-items: $align;
+  flex-flow: $flow;
+}
+
+@mixin flex-between($align, $flow) {
+  display: flex;
+  justify-content: space-between;
+  align-items: $align;
+  flex-flow: $flow;
+}
