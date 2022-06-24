@@ -36,7 +36,6 @@ function renderImg() {
       </li>`,
   );
   items.innerHTML = imgUI.join('');
-  console.log(position);
 }
 
 renderImg();
@@ -61,5 +60,4 @@ window.addEventListener('wheel', (e) => {
     }
   }
   items.style.transform = 'translate3d(0px, 0px, ' + trans + 'px)';
-  console.log(display);
 });
