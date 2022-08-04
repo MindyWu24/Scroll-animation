@@ -3,6 +3,7 @@ const items = document.querySelector('.items');
 const item = items.children;
 let trans = 0;
 let display = -1;
+const SCROLL_UNIT = 20;
 
 function renderImg() {
   let p = 400;
@@ -47,14 +48,18 @@ window.addEventListener('wheel', (e) => {
 
   display >= 33 ? (display = 33) : (display = display);
   if (e.wheelDelta < 0) {
-    trans += 100;
+    trans += SCROLL_UNIT;
     item[display].classList.remove('hidden');
     if (display + 1 <= 32) {
       item[display + 1].classList.remove('hidden');
     }
   }
   if (e.wheelDelta > 0) {
-    trans == 0 ? (trans = 0) : (trans -= 100);
+    if (trans >= SCROLL_UNIT ) {
+      trans -= SCROLL_UNIT
+    } else {
+      trans = 0
+    }
     if (display + 1 <= 33) {
       item[display + 1].classList.add('hidden');
     }
